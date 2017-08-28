@@ -31,7 +31,7 @@ To install transport-protocol from source:
 A standalone library that can be used for providing multiple communication transports within the context of ADB.
 The transport protocol should care about:
 
-* Merging communication transports with the [wire-protocol](https://github.com/adbpy/wire-protocol)
+* Merging communication [transports](https://github.com/adbpy/transports) with the [wire-protocol](https://github.com/adbpy/wire-protocol)
 * Providing transport agnostic protocol interface
 
 The transport protocol should not care about:
