@@ -28,6 +28,12 @@ class TransportProtocolTimeoutError(TransportProtocolError):
     """
 
 
+class TransportProtocolClosedError(TransportProtocolError):
+    """
+    Exception raised when attempting to perform an action of a closed protocol.
+    """
+
+
 class TimeoutNotStartedError(TransportProtocolError):
     """
     Exception raised when attempting to perform certain actions on :class:`~adbtp.timeouts.Timeout` instances
