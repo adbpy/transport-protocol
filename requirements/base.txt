@@ -2,4 +2,6 @@
 #
 # Requirements for using this package.
 
+adbts==0.0.1
+adbwp==0.0.1
 typing==3.6.1; python_version < '3.6'
