@@ -14,7 +14,7 @@ from . import exceptions, hints
 #: Sentinel object used to indicate when a timeout value was actually passed
 #: since `None` is a valid type.
 #: Note: This needs to match the sentinel value in the `adbts` package so the value can be passed down.
-SENTINEL = adbts.timeouts.SENTINEL
+UNDEFINED = adbts.timeouts.UNDEFINED
 
 
 #: Number of additional milliseconds to spend if a timeout expires between sending header and message.
@@ -75,7 +75,7 @@ class Timeout:
         :return: Check to see if this timeout has an undefined period
         :rtype: :class:`~bool`
         """
-        return self.period is SENTINEL
+        return self.period is UNDEFINED
 
     @property
     def period(self) -> hints.Timeout:
@@ -201,6 +201,6 @@ def wrap(timeout):
     """
     if isinstance(timeout, Timeout):
         return timeout
-    if timeout is not SENTINEL:
+    if timeout is not UNDEFINED:
         timeout = int(timeout)
     return Timeout(timeout)

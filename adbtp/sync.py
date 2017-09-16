@@ -35,7 +35,7 @@ class Protocol(protocol.Protocol):
         return self._transport and self._transport.closed
 
     @protocol.ensure_opened
-    def read(self, timeout: hints.Timeout=timeouts.SENTINEL):
+    def read(self, timeout: hints.Timeout=timeouts.UNDEFINED):
         """
         Read a message from the protocol.
 
@@ -50,7 +50,7 @@ class Protocol(protocol.Protocol):
                 return read_payload(header, self._transport, timeout)
 
     @protocol.ensure_opened
-    def write(self, message, timeout: hints.Timeout=timeouts.SENTINEL):
+    def write(self, message, timeout: hints.Timeout=timeouts.UNDEFINED):
         """
         Write a message to the protocol.
 
