@@ -116,7 +116,7 @@ class Timeout:
         :return: Boolean indicating whether or not timeout has been running too long
         :rtype: :class:`~bool`
         """
-        return False if self.undefined else self.elapsed_seconds <= 0
+        return False if self.undefined else self.remaining_seconds <= 0
 
     @property
     @ensure_started
