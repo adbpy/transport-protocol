@@ -49,7 +49,7 @@ class Protocol(metaclass=abc.ABCMeta):
         """
 
     @abc.abstractmethod
-    def read(self, timeout: hints.Timeout=timeouts.SENTINEL):
+    def read(self, timeout: hints.Timeout=timeouts.UNDEFINED):
         """
         Read a message from the protocol.
 
@@ -60,7 +60,7 @@ class Protocol(metaclass=abc.ABCMeta):
         """
 
     @abc.abstractmethod
-    def write(self, message, timeout: hints.Timeout=timeouts.SENTINEL) -> None:
+    def write(self, message, timeout: hints.Timeout=timeouts.UNDEFINED) -> None:
         """
         Write a message to the protocol.
 
