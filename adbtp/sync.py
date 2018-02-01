@@ -63,8 +63,8 @@ class Protocol(protocol.Protocol):
         """
         with self._write_lock:
             with timeouts.wrap(timeout) as timeout:
-                write_header(message.header, timeout)
-                write_payload(message, timeout)
+                write_header(message.header, self._transport, timeout)
+                write_payload(message, self._transport, timeout)
 
     @protocol.ensure_opened
     def close(self):
