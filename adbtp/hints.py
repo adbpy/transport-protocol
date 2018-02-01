@@ -26,4 +26,4 @@ Str = str
 
 #: Type hint that defines an optional integer value that represents
 #: a timeout value to a transport.
-Timeout = typing.Optional[int]
+Timeout = typing.Optional[typing.Union[int, float]]
