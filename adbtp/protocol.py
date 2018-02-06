@@ -42,7 +42,7 @@ class Protocol(metaclass=abc.ABCMeta):
     Abstract class that defines a transport protocol.
     """
 
-    def __init__(self, transport):
+    def __init__(self, transport: hints.Transport) -> None:
         self._transport = transport
 
     def __enter__(self):

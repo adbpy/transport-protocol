@@ -19,7 +19,7 @@ class Protocol(protocol.Protocol):
     Defines asynchronous (non-blocking) transport protocol.
     """
 
-    def __init__(self, transport):
+    def __init__(self, transport: hints.Transport) -> None:
         super().__init__(transport)
         self._read_lock = asyncio.Lock()
         self._write_lock = asyncio.Lock()

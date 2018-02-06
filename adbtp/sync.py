@@ -19,7 +19,7 @@ class Protocol(protocol.Protocol):
     Defines synchronous (blocking) transport protocol.
     """
 
-    def __init__(self, transport):
+    def __init__(self, transport: hints.Transport) -> None:
         super().__init__(transport)
         self._read_lock = threading.RLock()
         self._write_lock = threading.RLock()

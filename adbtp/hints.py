@@ -6,6 +6,8 @@
 """
 import typing
 
+import adbts
+
 # pylint: disable=invalid-name,no-member,unsubscriptable-object
 
 #: Type hint that is an alias for the built-in :class:`~bool` type.
@@ -27,3 +29,7 @@ Str = str
 #: Type hint that defines an optional integer value that represents
 #: a timeout value to a transport.
 Timeout = typing.Optional[typing.Union[int, float]]
+
+
+#: Type hint that represents an ADB transport.
+Transport = adbts.Transport
