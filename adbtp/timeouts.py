@@ -11,6 +11,8 @@ import adbts
 
 from . import exceptions, hints
 
+__all__ = ['Timeout', 'wrap']
+
 #: Sentinel object used to indicate when a timeout value was actually passed
 #: since `None` is a valid type.
 #: Note: This needs to match the sentinel value in the `adbts` package so the value can be passed down.
