@@ -67,7 +67,7 @@ class Protocol(protocol.Protocol):
                 write_header(message.header, self._transport, timeout)
                 write_payload(message, self._transport, timeout)
 
-    @protocol.ensure_opened
+    @protocol.ensure_no_op_when_closed
     def close(self):
         """
         Close the protocol.

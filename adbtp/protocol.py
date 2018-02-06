@@ -12,6 +12,19 @@ from . import exceptions, hints, timeouts
 __all__ = ['Protocol']
 
 
+def ensure_no_op_when_closed(func):
+    """
+    Decorator used to guard :class:`~adbtp.protocol.Protocol` methods to perform a no-op when the transport
+    is closed.
+    """
+    @functools.wraps(func)
+    def decorator(self, *args, **kwargs):
+        if self.closed:
+            return None
+        return func(self, *args, **kwargs)
+    return decorator
+
+
 def ensure_opened(func):
     """
     Decorator used to guard :class:`~adbtp.protocol.Protocol` methods that require it not to be closed.
