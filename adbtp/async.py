@@ -85,7 +85,7 @@ class Protocol(protocol.Protocol):
 
 @exceptions.reraise((adbts.TransportError, adbwp.WireProtocolError))
 @exceptions.reraise_timeout_errors(adbts.TransportTimeoutError)
-def open(transport) -> Protocol:  # pylint: disable=redefined-builtin
+def open(transport: hints.Transport) -> Protocol:  # pylint: disable=redefined-builtin
     """
     Open a new :class:`~adbtp.sync.Protocol` using the given asynchronous transport.
 
@@ -100,7 +100,7 @@ def open(transport) -> Protocol:  # pylint: disable=redefined-builtin
 @asyncio.coroutine
 @exceptions.reraise((adbts.TransportError, adbwp.WireProtocolError))
 @exceptions.reraise_timeout_errors(adbts.TransportTimeoutError)
-def read_header(transport, timeout) -> hints.Header:
+def read_header(transport: hints.Transport, timeout) -> hints.Header:
     """
     Read bytes from the transport to create a new :class:`~adbwp.header.Header`.
 
@@ -120,7 +120,7 @@ def read_header(transport, timeout) -> hints.Header:
 @asyncio.coroutine
 @exceptions.reraise((adbts.TransportError, adbwp.WireProtocolError))
 @exceptions.reraise_timeout_errors(adbts.TransportTimeoutError)
-def read_payload(header: hints.Header, transport, timeout):
+def read_payload(header: hints.Header, transport: hints.Transport, timeout):
     """
     Read optional 'data_length' number of bytes from the transport
     to create a new :class:`~adbwp.message.Message`.
@@ -144,7 +144,7 @@ def read_payload(header: hints.Header, transport, timeout):
 @asyncio.coroutine
 @exceptions.reraise((adbts.TransportError, adbwp.WireProtocolError))
 @exceptions.reraise_timeout_errors(adbts.TransportTimeoutError)
-def write_header(header: hints.Header, transport, timeout):
+def write_header(header: hints.Header, transport: hints.Transport, timeout):
     """
     Write given :class:`~adbwp.header.Header` header as bytes to the transport.
 
@@ -165,7 +165,7 @@ def write_header(header: hints.Header, transport, timeout):
 @asyncio.coroutine
 @exceptions.reraise((adbts.TransportError, adbwp.WireProtocolError))
 @exceptions.reraise_timeout_errors(adbts.TransportTimeoutError)
-def write_payload(message, transport, timeout):
+def write_payload(message, transport: hints.Transport, timeout):
     """
     Write given :class:`~adbwp.message.Message` data payload to the transport.
 
