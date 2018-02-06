@@ -96,14 +96,14 @@ def open(transport: hints.Transport) -> Protocol:  # pylint: disable=redefined-b
 
 @exceptions.reraise((adbts.TransportError, adbwp.WireProtocolError))
 @exceptions.reraise_timeout_errors(adbts.TransportTimeoutError)
-def read_header(transport: hints.Transport, timeout) -> hints.Header:
+def read_header(transport: hints.Transport, timeout: timeouts.Timeout) -> hints.Header:
     """
     Read bytes from the transport to create a new :class:`~adbwp.header.Header`.
 
     :param transport: Transport to read from
     :type transport: :class:`~adbts.transport.Transport`
     :param timeout: Maximum number of milliseconds to read before raising an exception
-    :type timeout: :class:`~int`, :class:`~NoneType`, or :class:`~object`
+    :type timeout: :class:`~adbtp.timeouts.Timeout`
     :return: Message header read from transport
     :rtype: :class:`~adbwp.header.Header`
     :raises :class:`~adbtp.exceptions.TransportProtocolError` When transport or wire-protocol raise exceptions
@@ -115,7 +115,7 @@ def read_header(transport: hints.Transport, timeout) -> hints.Header:
 
 @exceptions.reraise((adbts.TransportError, adbwp.WireProtocolError))
 @exceptions.reraise_timeout_errors(adbts.TransportTimeoutError)
-def read_payload(header: hints.Header, transport: hints.Transport, timeout):
+def read_payload(header: hints.Header, transport: hints.Transport, timeout: timeouts.Timeout):
     """
     Read optional 'data_length' number of bytes from the transport
     to create a new :class:`~adbwp.message.Message`.
@@ -125,7 +125,7 @@ def read_payload(header: hints.Header, transport: hints.Transport, timeout):
     :param transport: Transport to read from
     :type transport: :class:`~adbts.transport.Transport`
     :param timeout: Maximum number of milliseconds to read before raising an exception
-    :type timeout: :class:`~int`, :class:`~NoneType`, or :class:`~object`
+    :type timeout: :class:`~adbtp.timeouts.Timeout`
     :return: Message from header and payload bytes read from transport
     :rtype: :class:`~adbwp.message.Message`
     :raises :class:`~adbtp.exceptions.TransportProtocolError` When transport or wire-protocol raise exceptions
@@ -137,7 +137,7 @@ def read_payload(header: hints.Header, transport: hints.Transport, timeout):
 
 @exceptions.reraise((adbts.TransportError, adbwp.WireProtocolError))
 @exceptions.reraise_timeout_errors(adbts.TransportTimeoutError)
-def write_header(header: hints.Header, transport: hints.Transport, timeout):
+def write_header(header: hints.Header, transport: hints.Transport, timeout: timeouts.Timeout):
     """
     Write given :class:`~adbwp.header.Header` header as bytes to the transport.
 
@@ -146,7 +146,7 @@ def write_header(header: hints.Header, transport: hints.Transport, timeout):
     :param transport: Transport to write to
     :type transport: :class:`~adbts.transport.Transport`
     :param timeout: Maximum number of milliseconds to write before raising an exception
-    :type timeout: :class:`~int`, :class:`~NoneType`, or :class:`~object`
+    :type timeout: :class:`~adbtp.timeouts.Timeout`
     :return: Nothing
     :rtype: :class:`~NoneType`
     :raises :class:`~adbtp.exceptions.TransportProtocolError` When transport or wire-protocol raise exceptions
@@ -157,7 +157,7 @@ def write_header(header: hints.Header, transport: hints.Transport, timeout):
 
 @exceptions.reraise((adbts.TransportError, adbwp.WireProtocolError))
 @exceptions.reraise_timeout_errors(adbts.TransportTimeoutError)
-def write_payload(message, transport: hints.Transport, timeout):
+def write_payload(message, transport: hints.Transport, timeout: timeouts.Timeout):
     """
     Write given :class:`~adbwp.message.Message` data payload to the transport.
 
@@ -166,7 +166,7 @@ def write_payload(message, transport: hints.Transport, timeout):
     :param transport: Transport to write to
     :type transport: :class:`~adbts.transport.Transport`
     :param timeout: Maximum number of milliseconds to write before raising an exception
-    :type timeout: :class:`~int`, :class:`~NoneType`, or :class:`~object`
+    :type timeout: :class:`~adbtp.timeouts.Timeout`
     :return: Nothing
     :rtype: :class:`~NoneType`
     :raises :class:`~adbtp.exceptions.TransportProtocolError` When transport or wire-protocol raise exceptions
