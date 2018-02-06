@@ -37,7 +37,7 @@ class Protocol(protocol.Protocol):
 
     @asyncio.coroutine
     @protocol.ensure_opened
-    def read(self, timeout: hints.Timeout=timeouts.UNDEFINED):
+    def read(self, timeout: hints.Timeout=timeouts.UNDEFINED) -> hints.Message:
         """
         Read a message from the protocol.
 

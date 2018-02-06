@@ -65,7 +65,7 @@ class Protocol(metaclass=abc.ABCMeta):
         """
 
     @abc.abstractmethod
-    def read(self, timeout: hints.Timeout=timeouts.UNDEFINED):
+    def read(self, timeout: hints.Timeout=timeouts.UNDEFINED) -> hints.Message:
         """
         Read a message from the protocol.
 

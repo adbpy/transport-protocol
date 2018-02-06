@@ -7,6 +7,7 @@
 import typing
 
 import adbts
+import adbwp
 
 # pylint: disable=invalid-name,no-member,unsubscriptable-object
 
@@ -33,3 +34,7 @@ Timeout = typing.Optional[typing.Union[int, float]]
 
 #: Type hint that represents an ADB transport.
 Transport = adbts.Transport
+
+
+#: Type hint that represents an ADB message.
+Message = adbwp.Message

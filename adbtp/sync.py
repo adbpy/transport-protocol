@@ -36,7 +36,7 @@ class Protocol(protocol.Protocol):
         return not self._transport or self._transport.closed
 
     @protocol.ensure_opened
-    def read(self, timeout: hints.Timeout=timeouts.UNDEFINED):
+    def read(self, timeout: hints.Timeout=timeouts.UNDEFINED) -> hints.Message:
         """
         Read a message from the protocol.
 
