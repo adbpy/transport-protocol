@@ -51,7 +51,7 @@ class Protocol(protocol.Protocol):
                 return read_payload(header, self._transport, timeout)
 
     @protocol.ensure_opened
-    def write(self, message, timeout: hints.Timeout=timeouts.UNDEFINED):
+    def write(self, message, timeout: hints.Timeout=timeouts.UNDEFINED) -> None:
         """
         Write a message to the protocol.
 

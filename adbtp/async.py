@@ -54,7 +54,7 @@ class Protocol(protocol.Protocol):
 
     @asyncio.coroutine
     @protocol.ensure_opened
-    def write(self, message, timeout: hints.Timeout=timeouts.UNDEFINED):
+    def write(self, message, timeout: hints.Timeout=timeouts.UNDEFINED) -> None:
         """
         Write a message to the protocol.
 
