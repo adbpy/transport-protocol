@@ -71,7 +71,7 @@ class Protocol(protocol.Protocol):
                 yield from write_payload(message, self._transport, timeout)
 
     @protocol.ensure_no_op_when_closed
-    def close(self):
+    def close(self) -> None:
         """
         Close the protocol.
 
