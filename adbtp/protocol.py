@@ -29,6 +29,9 @@ class Protocol(metaclass=abc.ABCMeta):
     Abstract class that defines a transport protocol.
     """
 
+    def __init__(self, transport):
+        self._transport = transport
+
     def __enter__(self):
         return self
 
@@ -36,7 +39,7 @@ class Protocol(metaclass=abc.ABCMeta):
         self.close()
 
     def __repr__(self):
-        return '<{}({!r})>'.format(self.__class__.__name__, str(self))
+        return '<{}({!r})>'.format(self.__class__.__name__, self._transport)
 
     @property
     @abc.abstractmethod

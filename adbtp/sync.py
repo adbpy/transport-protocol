@@ -20,7 +20,7 @@ class Protocol(protocol.Protocol):
     """
 
     def __init__(self, transport):
-        self._transport = transport
+        super().__init__(transport)
         self._read_lock = threading.RLock()
         self._write_lock = threading.RLock()
         self._close_lock = threading.RLock()

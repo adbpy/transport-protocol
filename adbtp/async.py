@@ -20,7 +20,7 @@ class Protocol(protocol.Protocol):
     """
 
     def __init__(self, transport):
-        self._transport = transport
+        super().__init__(transport)
         self._read_lock = asyncio.Lock()
         self._write_lock = asyncio.Lock()
         self._close_lock = asyncio.Lock()
