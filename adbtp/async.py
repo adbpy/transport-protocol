@@ -33,7 +33,7 @@ class Protocol(protocol.Protocol):
         :return: Closed state of the protocol
         :rtype: :class:`~bool`
         """
-        return self._transport and self._transport.closed
+        return not self._transport or self._transport.closed
 
     @asyncio.coroutine
     @protocol.ensure_opened
