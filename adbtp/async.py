@@ -11,7 +11,7 @@ import adbwp
 
 from . import exceptions, hints, protocol, timeouts
 
-__all__ = ['Protocol']
+__all__ = ['Protocol', 'open']
 
 
 class Protocol(protocol.Protocol):
@@ -81,6 +81,20 @@ class Protocol(protocol.Protocol):
         with self._close_lock:
             self._transport.close()
             self._transport = None
+
+
+@exceptions.reraise((adbts.TransportError, adbwp.WireProtocolError))
+@exceptions.reraise_timeout_errors(adbts.TransportTimeoutError)
+def open(transport):  # pylint: disable=redefined-builtin
+    """
+    Open a new :class:`~adbtp.sync.Protocol` using the given asynchronous transport.
+
+    :param transport: Asynchronous transport to use with the protocol
+    :rtype transport: :class:`~adbts.transport.Transport`
+    :return: An asynchronous protocol
+    :rtype: :class:`~adbtp.async.Protocol`
+    """
+    return Protocol(transport)
 
 
 @asyncio.coroutine
