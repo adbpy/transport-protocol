@@ -21,8 +21,8 @@ class Protocol(protocol.Protocol):
 
     def __init__(self, transport):
         self._transport = transport
-        self._read_lock = None
-        self._write_lock = None
+        self._read_lock = asyncio.Lock()
+        self._write_lock = asyncio.Lock()
 
     @property
     def closed(self):
