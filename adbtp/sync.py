@@ -26,7 +26,7 @@ class Protocol(protocol.Protocol):
         self._close_lock = threading.RLock()
 
     @property
-    def closed(self):
+    def closed(self) -> hints.Bool:
         """
         Checks to see if the protocol is closed.
 
