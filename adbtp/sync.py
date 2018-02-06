@@ -23,6 +23,7 @@ class Protocol(protocol.Protocol):
         self._transport = transport
         self._read_lock = threading.RLock()
         self._write_lock = threading.RLock()
+        self._close_lock = threading.RLock()
 
     @property
     def closed(self):
@@ -74,8 +75,9 @@ class Protocol(protocol.Protocol):
         :return: Nothing
         :rtype: :class:`~NoneType`
         """
-        self._transport.close()
-        self._transport = None
+        with self._close_lock:
+            self._transport.close()
+            self._transport = None
 
 
 @exceptions.reraise((adbts.TransportError, adbwp.WireProtocolError))
