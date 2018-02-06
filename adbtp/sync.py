@@ -96,7 +96,7 @@ def open(transport) -> Protocol:  # pylint: disable=redefined-builtin
 
 @exceptions.reraise((adbts.TransportError, adbwp.WireProtocolError))
 @exceptions.reraise_timeout_errors(adbts.TransportTimeoutError)
-def read_header(transport, timeout):
+def read_header(transport, timeout) -> hints.Header:
     """
     Read bytes from the transport to create a new :class:`~adbwp.header.Header`.
 
@@ -115,7 +115,7 @@ def read_header(transport, timeout):
 
 @exceptions.reraise((adbts.TransportError, adbwp.WireProtocolError))
 @exceptions.reraise_timeout_errors(adbts.TransportTimeoutError)
-def read_payload(header, transport, timeout):
+def read_payload(header: hints.Header, transport, timeout):
     """
     Read optional 'data_length' number of bytes from the transport
     to create a new :class:`~adbwp.message.Message`.
@@ -137,7 +137,7 @@ def read_payload(header, transport, timeout):
 
 @exceptions.reraise((adbts.TransportError, adbwp.WireProtocolError))
 @exceptions.reraise_timeout_errors(adbts.TransportTimeoutError)
-def write_header(header, transport, timeout):
+def write_header(header: hints.Header, transport, timeout):
     """
     Write given :class:`~adbwp.header.Header` header as bytes to the transport.
 

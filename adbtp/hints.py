@@ -38,3 +38,7 @@ Transport = adbts.Transport
 
 #: Type hint that represents an ADB message.
 Message = adbwp.Message
+
+
+#: Type hint that represents a ADB message header.
+Header = adbwp.Header
