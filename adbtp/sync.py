@@ -82,7 +82,7 @@ class Protocol(protocol.Protocol):
 
 @exceptions.reraise((adbts.TransportError, adbwp.WireProtocolError))
 @exceptions.reraise_timeout_errors(adbts.TransportTimeoutError)
-def open(transport):  # pylint: disable=redefined-builtin
+def open(transport) -> Protocol:  # pylint: disable=redefined-builtin
     """
     Open a new :class:`~adbtp.sync.Protocol` using the given synchronous transport.
 
