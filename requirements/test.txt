@@ -8,6 +8,6 @@ coverage>4.0,<4.6
 
 pytest==3.1.2
 pytest-benchmark==3.2.2
-pytest-cov==2.5.1
+pytest-cov==2.8.1
 pytest-mock==1.11.2
 pytest-pep8==1.0.6
