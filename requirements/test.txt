@@ -9,5 +9,5 @@ coverage>4.0,<4.6
 pytest==5.3.1
 pytest-benchmark==3.2.2
 pytest-cov==2.8.1
-pytest-mock==1.12.1
+pytest-mock==1.13.0
 pytest-pep8==1.0.6
