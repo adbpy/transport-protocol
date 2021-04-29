@@ -1,0 +1,23 @@
+version: 2
+updates:
+- package-ecosystem: pip
+  directory: "/"
+  schedule:
+    interval: daily
+  open-pull-requests-limit: 20
+  ignore:
+  - dependency-name: sphinx
+    versions:
+    - 3.5.0
+    - 3.5.2
+    - 3.5.3
+  - dependency-name: tox
+    versions:
+    - 3.21.3
+    - 3.21.4
+  - dependency-name: coverage
+    versions:
+    - "5.4"
+  - dependency-name: mypy
+    versions:
+    - "0.800"
